@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/figtree";
+
+/* Tema segue o sistema operacional */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: 'Bricolage Grotesque Variable', 'Trebuchet MS', system-ui, sans-serif;
+  --font-sans: 'Figtree Variable', 'Segoe UI', system-ui, sans-serif;
+
+  /* Paleta da padaria */
+  --color-flour: var(--flour);
+  --color-wine: var(--wine);
+  --color-wine-soft: var(--wine-soft);
+  --color-on-wine: var(--on-wine);
+  --color-crust: var(--crust);
+  --color-ok: var(--ok);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Branco e o vermelho da logo. Só tema claro. */
+  color-scheme: light;
+  --flour: #FFFFFF;
+  --wine: #740108;
+  --wine-soft: #F8EDEE;
+  --on-wine: #FFFFFF;
+  --crust: #292929;
+  --ok: #2F7A4B;
+
+  --background: var(--flour);
+  --foreground: var(--crust);
+  --card: #FFFFFF;
+  --card-foreground: var(--crust);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--crust);
+  --primary: var(--wine);
+  --primary-foreground: var(--on-wine);
+  --secondary: #F5F5F5;
+  --secondary-foreground: var(--crust);
+  --muted: #F5F5F5;
+  --muted-foreground: #666666;
+  --accent: #F5F5F5;
+  --accent-foreground: var(--crust);
+  --destructive: #B42318;
+  --border: #E6E6E6;
+  --input: #E6E6E6;
+  --ring: var(--wine);
+  --radius: 0.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-heading;
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid var(--wine);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+}
+
+/* O saquinho de pão: borda serrilhada embaixo (zig) ou em cima (zig-top) */
+@utility zig {
+  --z: 10px;
+  padding-bottom: calc(var(--z) + 8px);
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / calc(2 * var(--z)) 100%;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / calc(2 * var(--z)) 100%;
+}
+@utility zig-top {
+  --z: 10px;
+  padding-top: calc(var(--z) + 6px);
+  -webkit-mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) 50% / calc(2 * var(--z)) 100%;
+  mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) 50% / calc(2 * var(--z)) 100%;
+}
+
