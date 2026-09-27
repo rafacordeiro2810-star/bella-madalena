@@ -2,7 +2,7 @@
 export const CONFIG = {
   whatsapp: "5511940256155", // DDI + DDD + número, só dígitos
   phoneLabel: "(11) 94025-6155",
-  address: "Rua da Padaria, 123, Centro",
+  address: "Rua Heitor Penteado, 379, Vila Madalena, São Paulo, 05437-000",
   instagram: "bellamadalena",
   /** Horários das fornadas de pão francês (HH:MM). */
   fornadas: ["6:30", "10:00", "15:30", "17:30"],
